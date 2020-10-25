@@ -92,7 +92,7 @@ class MyResource {
         
         doSomething();
         
-        return Response.ok("{\"status\":\"active\"}").build()
+        return Response.ok("{\"status\":\"active\"}").build();
     }
 }
 ```
