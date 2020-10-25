@@ -1,0 +1,114 @@
+plugins {
+    id 'java-library'
+    id 'groovy'
+    id 'maven-publish'
+    id 'signing'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Legacy metric names with tags
+    api group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging', version: '1.0.0'
+
+    // Dropwizard Metrics
+    implementation group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.12.1'
+    implementation group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.1.12.1'
+
+    // Jersey 2
+    implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.31'
+
+    // Spock for testing
+    testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-M3-groovy-3.0'
+}
+
+archivesBaseName = 'metrics-tagging-jersey2'
+group = 'de.peetzen.dropwizard.metrics'
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'metrics-tagging-jersey2'
+            from components.java
+            pom {
+                name = 'Support for Dropwizard metric names with encoded tags'
+                description = 'The Metrics library (v4.x) does not natively support tags, however tags can be encoded as part' +
+                        ' of the metric name. This library offers a modified MetricName class for converting tagged ' +
+                        'metrics to the legay format.'
+                url = 'https://github.com/peetzen/dropwizard-metrics-tagging-jersey2'
+                licenses {
+                    license {
+                        name = "Apache License, Version 2.0"
+                        url = "https://www.apache.org/licenses/LICENSE-2.0"
+                        distribution = "repo"
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'peetzen'
+                        name = 'Markus Peetzen'
+                        email = 'dev@peetzen.de'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/peetzen/dropwizard-metrics-tagging-jersey2'
+                    connection = 'scm:git:git://github.com/peetzen/dropwizard-metrics-tagging-jersey2.git'
+                    developerConnection = 'scm:git:git://github.com/peetzen/dropwizard-metrics-tagging-jersey2.git'
+                }
+                issueManagement {
+                    system = "GitHub"
+                    url = 'https://github.com/peetzen/dropwizard-metrics-tagging-jersey2/issues'
+                }
+            }
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            credentials {
+                username project.findProperty('sonatypeOssUsername') ?: System.getenv('SONATYPE_OSS_USERNAME')
+                password project.findProperty('sonatypeOssPassword') ?: System.getenv('SONATYPE_OSS_PASSWORD')
+            }
+        }
+    }
+}
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+signing {
+    required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+    sign publishing.publications.mavenJava
+}
+
+tasks.withType(Sign) {
+    onlyIf { isReleaseVersion }
+}
+
+javadoc {
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}

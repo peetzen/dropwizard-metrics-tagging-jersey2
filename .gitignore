@@ -1,0 +1,34 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Gradle
+build/
+.gradle/
+
+# emacs
+*~
+\#*
+
+# GNUPG
+.gnupg/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+
+# Eclipse
+.settings/
+.project
+.classpath
+**/bin/
+
+# Mac OC X files
+.DS_Store
+
+# Various
+*.tmp
+generated/
