@@ -11,9 +11,9 @@ import javax.ws.rs.core.FeatureContext;
  * A {@link Feature} which registers a {@link InstrumentedResourceMethodApplicationListener}
  * for recording request events.
  * <p>
- * NOTE: Modified copy of {@link com.codahale.metrics.jersey2.MetricsFeature} to support dynamic tagging.
+ * NOTE: Modified copy of {@code com.codahale.metrics.jersey2.MetricsFeature} to support dynamic tagging.
  * <p>
- * To differenciate between metrics exposed by {@link com.codahale.metrics.jersey2.MetricsFeature} a suffix can be
+ * To differentiate between metrics exposed by {@code com.codahale.metrics.jersey2.MetricsFeature} a suffix can be
  * provided. Default suffix is "tagged".
  */
 public class MetricsDynamicTaggingFeature implements Feature {

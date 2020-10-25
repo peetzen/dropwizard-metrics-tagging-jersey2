@@ -45,7 +45,7 @@ import static com.codahale.metrics.MetricRegistry.name;
  * request events indicating that the method is about to be invoked, or just got done
  * being invoked.
  * <p>
- * NOTE: Modified copy of {@link com.codahale.metrics.jersey2.InstrumentedResourceMethodApplicationListener} to support
+ * NOTE: Modified copy of {@code com.codahale.metrics.jersey2.InstrumentedResourceMethodApplicationListener} to support
  * dynamic tagging by adding tags from {@link MetricTaggingContext}.
  */
 @Provider
