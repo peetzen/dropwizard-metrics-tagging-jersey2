@@ -62,38 +62,40 @@ If no _tags_ are present, nothing will be captured. In this case the _MetricFeat
 ## Dropwizard Example
 
 Register the _Jersey_ feature `MetricDynamicTaggingFeature` within your _Dropwizard_ application.
+```java
+public class MyApplication extends Application<MyConfiguration> {
 
-    public class MyApplication extends Application<MyConfiguration> {
-   
-        @Override
-        public void run(MyConfiguration configuration, Environment environment) {
-            [...]
-            
-            // register feature to support dynamic tags using the dropwizard default annotation names
-            environment.jersey().register(new MetricsDynamicTaggingFeature(environment.metrics()));
-        }
+    @Override
+    public void run(MyConfiguration configuration, Environment environment) {
+        doOtherInitialisations();
+        
+        // register feature to support dynamic tags using the dropwizard default annotation names
+        environment.jersey().register(new MetricsDynamicTaggingFeature(environment.metrics()));
     }
+}
+```
 
 Add dynamic tags within resource implementation using `MetricTaggingContext#put(..)`.
+```java
+@Path("/")
+@Produces(MediaType.APPLICATION_JSON)
+class MyResource {
 
-    @Path("/")
-    @Produces(MediaType.APPLICATION_JSON)
-    class MyResource {
+    @GET
+    @Timed
+    @ExceptionMetered
+    @ResponseMetered
+    Response getStatus() {
     
-        @GET
-        @Timed
-        @ExceptionMetered
-        @ResponseMetered
-        Response getStatus() {
+        // add dynamic "tenant" tag that will be part of tagged resource metrics
+        MetricTaggingContext.put("tenant", getTenant());
         
-            // add dynamic "tenant" tag that will be part of tagged resource metrics
-            MetricTaggingContext.put("tenant", getTenant());
-            
-            doSomething()
-            
-            return Response.ok("{\"status\":\"active\"}").build()
-        }
+        doSomething();
+        
+        return Response.ok("{\"status\":\"active\"}").build()
     }
+}
+```
     
 ### Exposed Metrics
 
