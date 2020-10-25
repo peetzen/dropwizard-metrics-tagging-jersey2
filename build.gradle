@@ -12,7 +12,7 @@ repositories {
 dependencies {
 
     // Legacy metric names with tags
-    api group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging', version: '1.0.0'
+    api group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging', version: '1.0.1'
 
     // Dropwizard Metrics
     implementation group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.12.1'
@@ -33,6 +33,8 @@ test {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
     withJavadocJar()
     withSourcesJar()
 }
