@@ -1,6 +1,6 @@
 # Tagging support for Dropwizard Jersey 2 Metrics
 [![CircleCI](https://img.shields.io/circleci/build/gh/peetzen/dropwizard-metrics-tagging-jersey2)](https://circleci.com/gh/peetzen/dropwizard-metrics-tagging-jersey2)
-[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard/dropwizard-metrics-tagging-jersey2)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-metrics-tagging-jersey2)
+[![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard.metrics/metrics-tagging-jersey2)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-metrics-tagging-jersey2)
 [![License](https://img.shields.io/github/license/peetzen/dropwizard-metrics-tagging-jersey2)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v2.x-green)](https://github.com/dropwizard/dropwizard)
