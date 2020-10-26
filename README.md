@@ -31,13 +31,13 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard.metrics</groupId>
   <artifactId>metrics-tagging-jersey2</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-implementation group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging-jersey2', version: '1.0.0'
+implementation group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging-jersey2', version: '1.0.1'
 ```
 
 ## Usage
