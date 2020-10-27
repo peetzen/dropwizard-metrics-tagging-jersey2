@@ -3,6 +3,8 @@
 [![Maven Central](https://img.shields.io/maven-central/v/de.peetzen.dropwizard.metrics/metrics-tagging-jersey2)](https://search.maven.org/artifact/de.peetzen.dropwizard/dropwizard-metrics-tagging-jersey2)
 [![License](https://img.shields.io/github/license/peetzen/dropwizard-metrics-tagging-jersey2)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
+[![Dropwizard](https://img.shields.io/badge/metrics-v4.x-green)](https://github.com/dropwizard/metrics)
+[![Dropwizard](https://img.shields.io/badge/dropwizard-v1.3.x-green)](https://github.com/dropwizard/dropwizard)
 [![Dropwizard](https://img.shields.io/badge/dropwizard-v2.x-green)](https://github.com/dropwizard/dropwizard)
 
 The [Metrics](https://metrics.dropwizard.io/) project from [Dropwizard](https://www.dropwizard.io/) does not natively 
@@ -19,8 +21,8 @@ This library tries to combine the power of _Dropwizard`s_ default [Metrics annot
 with a flexible approach to add tags dynamically that are automatically evaluated by the _Jersey_ server framework.  
 
 ## Dependencies
-The implementation is based on `io.dropwizard.metrics:metrics-jersey2:4.1.12.1` used
-by `io.dropwizard:dropwizard-core:2.0.13`. It is compatible with other _Dropwizard_ versions.
+The implementation is based on `io.dropwizard.metrics:metrics-jersey2:4.1.12.1`.
+It is compatible with [Metrics](https://metrics.dropwizard.io/) since version `v4.0.0`, bundled with [Dropwizard](https://www.dropwizard.io/) since version `v1.3.0`.
 
 
 ## Getting started
@@ -31,13 +33,13 @@ For maven:
 <dependency>
   <groupId>de.peetzen.dropwizard.metrics</groupId>
   <artifactId>metrics-tagging-jersey2</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 
 For gradle:
 ```yaml
-implementation group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging-jersey2', version: '1.0.1'
+implementation group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging-jersey2', version: '1.0.2'
 ```
 
 ## Usage

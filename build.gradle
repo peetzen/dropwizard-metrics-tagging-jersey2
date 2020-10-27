@@ -15,11 +15,11 @@ dependencies {
     api group: 'de.peetzen.dropwizard.metrics', name: 'metrics-tagging', version: '1.0.1'
 
     // Dropwizard Metrics
-    implementation group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.1.12.1'
-    implementation group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.1.12.1'
+    implementation group: 'io.dropwizard.metrics', name: 'metrics-annotation', version: '4.0.0'
+    implementation group: 'io.dropwizard.metrics', name: 'metrics-core', version: '4.0.0'
 
     // Jersey 2
-    implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.31'
+    implementation group: 'org.glassfish.jersey.core', name: 'jersey-server', version: '2.25.1'
 
     // Spock for testing
     testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-M3-groovy-3.0'
